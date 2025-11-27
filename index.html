@@ -4,24 +4,29 @@
   <meta charset="utf-8">
   <title>Daily Dhun</title>
   <script>
-    // Map weekday (1=Monday to 5=Friday) to YouTube Premiere URLs
-    const links = {
-      1: "https://youtu.be/SX_d5ZUDweA", // Monday
-      2: "https://youtu.be/9Ix8GXiqDPA?si=BunUzBrgY6MFMsH1", // Tuesday
-      3: "https://youtu.be/9Ix8GXiqDPA?si=BunUzBrgY6MFMsH1", // Wednesday
-      4: "https://youtube.com/premiere4", // Thursday
-      5: "https://youtube.com/premiere5"  // Friday
-    };
+    // YouTube links for Monday to Friday
+    const links = [
+      "", // 0 = Sunday (no video)
+      "https://youtu.be/SX_d5ZUDweA", // 1 = Monday
+      "https://youtu.be/9Ix8GXiqDPA?si=BunUzBrgY6MFMsH1", // 2 = Tuesday
+      "https://youtu.be/9Ix8GXiqDPA?si=BunUzBrgY6MFMsH1", // 3 = Wednesday
+      "https://youtube.com/premiere4", // 4 = Thursday
+      "https://youtube.com/premiere5", // 5 = Friday
+      ""  // 6 = Saturday (no video)
+    ];
 
-    const day = new Date().getDay(); // 0=Sunday, 1=Monday...
-    const url = links[day] || "https://youtube.com/backup"; // fallback for Sunday
+    // Get today’s weekday (0 = Sunday, 1 = Monday, …)
+    const today = new Date().getDay();
 
-    window.location.href = url; // redirect
+    // Redirect to today’s video if it exists
+    if (links[today]) {
+      window.location.href = links[today];
+    } else {
+      document.body.innerHTML = "No video today. See you tomorrow!";
+    }
   </script>
 </head>
 <body>
   Redirecting to today's video...
 </body>
 </html>
-
-
