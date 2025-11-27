@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Daily Dhun</title>
+  <script>
+    // Map weekday (1=Monday to 5=Friday) to YouTube Premiere URLs
+    const links = {
+      1: "https://youtu.be/9Ix8GXiqDPA?si=BunUzBrgY6MFMsH1", // Monday
+      2: "https://youtu.be/9Ix8GXiqDPA?si=BunUzBrgY6MFMsH1", // Tuesday
+      3: "https://youtu.be/9Ix8GXiqDPA?si=BunUzBrgY6MFMsH1", // Wednesday
+      4: "https://youtube.com/premiere4", // Thursday
+      5: "https://youtube.com/premiere5"  // Friday
+    };
+
+    const day = new Date().getDay(); // 0=Sunday, 1=Monday...
+    const url = links[day] || "https://youtube.com/backup"; // fallback for Sunday
+
+    window.location.href = url; // redirect
+  </script>
+</head>
+<body>
+  Redirecting to today's video...
+</body>
+</html>
+
+
